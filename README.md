@@ -13,9 +13,7 @@ The UWDF (Universal Wearable Data Framework) Platform is a prototype for healthc
 ```
 UWDF-Prototype/
 ├── src/
-│   ├── uwdf_main.ino                   # ESP32S2 main program
-│   ├── XLOT_MAX301xx_PulseOximeter.h   # MAX30100 sensor header
-│   └── XLOT_MAX301xx_PulseOximeter.cpp # MAX30100 sensor implementation
+│   ├── uwdf_main.ino                   # ESP32S2 arduino program
 ├── server/
 │   ├── server.py                       # Laptop web server and API
 │   └── database_schema.sql             # SQLite database schema
@@ -39,7 +37,7 @@ UWDF-Prototype/
 ### Software
 - **ESP32S2**:
   - Arduino IDE or PlatformIO
-  - Libraries: ArduinoJson, WebSocketServer, MAX30100 (included as `XLOT_MAX301xx_PulseOximeter.h/cpp`)
+  - Libraries: ArduinoJson, WebSocketServer, MAX30100
 - **Laptop**:
   - Python 3.8+
   - Libraries: Flask, sqlite3, cryptography, flask-cors
@@ -68,7 +66,7 @@ UWDF-Prototype/
 - **API Access**: Use endpoints like `/sensors/data/<sensor_id>` with proper authentication.
 
 ## Notes
-- The MAX30100 sensor provides heart rate and SpO2 data, processed with an exponential moving average. Temperature and motion sensor reads are placeholders; replace with actual I2C sensor implementations (e.g., BME280 for temperature, MPU6050 for motion).
+- The MAX30100 sensor provides heart rate and SpO2 data, processed with an exponential moving average.
 - The server uses ad-hoc HTTPS for simplicity. In production, configure proper SSL certificates.
 - Authentication in `server.py` is simplified; implement a secure system (e.g., JWT) for production.
 - This project is licensed under the GNU General Public License v3 due to the inclusion of the GPL-licensed MAX30100 library. All derivative works must also be licensed under GPL v3.
